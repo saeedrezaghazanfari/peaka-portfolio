@@ -73,7 +73,7 @@ class EducationModel(models.Model):
 class DegreeModel(models.Model):
     image = models.ImageField(upload_to=degree_image_path, verbose_name='Image')
     title = models.CharField(max_length=255, verbose_name='Title')
-    created = models.DateTimeField(verbose_name='Created')
+    created = models.DateField(verbose_name='Created')
 
     def __str__(self):
         return self.title

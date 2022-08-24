@@ -1,4 +1,48 @@
 /* Timeline custom component */
+
+.wrapper-degree {
+  position: relative !important;
+}
+.degree-desc {
+  opacity: 0;
+  position: absolute !important;
+  inset: 0 !important;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+.degree-desc div {
+  position: absolute;
+  bottom: 7%;
+  left: 7%;
+}
+.degree-desc h3 { color: white; }
+.degree-desc p { color: white; font-size: 11pt; font-style: italic; }
+.wrapper-degree:hover .degree-desc { 
+  opacity: 1;
+} 
+.span-created {
+  font-size: 10pt;
+  margin-left: 10px;
+  font-style: italic;
+}
+.messages {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+.messages .messages_msg {
+  padding: 1rem 2rem;
+  background-color: rgb(41, 40, 40);
+  color: white;
+}
+.fade-out-msg {
+  animation: fade-out 1s 5s ease-in forwards;
+}
+@keyframes fade-out {
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
 .timeline-card {
   position: relative;
   margin-left: 16px; }

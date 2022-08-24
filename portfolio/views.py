@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib import messages
 from .forms import ContactForm
 from .models import (
     InfoModel,
@@ -8,16 +9,19 @@ from .models import (
     DegreeModel,
     PortfolioModel,
     ReferenceModel,
-    LinksModel,
-    ContactModel,
+    LinksModel
 )
 
 
+# url: /
 def home_page(request):
     contact_form = ContactForm(request.POST or None)
 
     if request.POST:
-        pass
+        if contact_form.is_valid():
+            contact_form.save()
+            messages.success(request, 'Thank You for Submission!')
+            return redirect('/')
 
     return render(request, 'portfolio/home.html', {
         'info': InfoModel.objects.last(),
@@ -26,8 +30,8 @@ def home_page(request):
         'skills2': SkillModel.objects.all()[SkillModel.objects.count()/2:],
         'exps': ExperienceModel.objects.all(),
         'edus': EducationModel.objects.all(),
-        # 'degrees': DegreeModel.objects.all(),
+        'degrees': DegreeModel.objects.all(),
         'ports': PortfolioModel.objects.all(),
-        # 'refs': ReferenceModel.objects.all(),
-        # 'form': contact_form,
+        'refs': ReferenceModel.objects.all()[:2],
+        'form': contact_form,
     })
