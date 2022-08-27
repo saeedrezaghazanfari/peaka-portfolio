@@ -4,6 +4,7 @@ from .forms import ContactForm
 from .models import (
     InfoModel,
     SkillModel,
+    LanguageModel,
     ExperienceModel,
     EducationModel,
     DegreeModel,
@@ -28,6 +29,7 @@ def home_page(request):
         'links': LinksModel.objects.last(),
         'skills1': SkillModel.objects.all()[0:SkillModel.objects.count()/2],
         'skills2': SkillModel.objects.all()[SkillModel.objects.count()/2:],
+        'langs': LanguageModel.objects.all(),
         'exps': ExperienceModel.objects.all(),
         'edus': EducationModel.objects.all(),
         'degrees': DegreeModel.objects.all(),

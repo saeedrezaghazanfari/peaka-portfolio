@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import (
     InfoModel,
     SkillModel,
+    LanguageModel,
     ExperienceModel,
     EducationModel,
     DegreeModel,
@@ -18,6 +19,10 @@ class InfoModel_admin(admin.ModelAdmin):
 
 class SkillModel_admin(admin.ModelAdmin):
     list_display = ['skill', 'percent', 'title']
+    ordering = ['-id']
+
+class LanguageModel_admin(admin.ModelAdmin):
+    list_display = ['language']
     ordering = ['-id']
 
 class ExperienceModel_admin(admin.ModelAdmin):
@@ -50,6 +55,7 @@ class ContactModel_admin(admin.ModelAdmin):
 
 admin.site.register(InfoModel, InfoModel_admin)
 admin.site.register(SkillModel, SkillModel_admin)
+admin.site.register(LanguageModel, LanguageModel_admin)
 admin.site.register(ExperienceModel, ExperienceModel_admin)
 admin.site.register(EducationModel, EducationModel_admin)
 admin.site.register(DegreeModel, DegreeModel_admin)

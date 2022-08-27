@@ -38,6 +38,21 @@ class SkillModel(models.Model):
         verbose_name_plural = 'Skills'
 
 
+class LanguageModel(models.Model):
+    language = models.CharField(max_length=255, verbose_name='Language')
+    listening = models.PositiveIntegerField(verbose_name='Listening')
+    speaking = models.PositiveIntegerField(verbose_name='Speaking')
+    reading = models.PositiveIntegerField(verbose_name='Reading')
+    writing = models.PositiveIntegerField(verbose_name='Writing')
+
+    def __str__(self):
+        return self.language
+
+    class Meta:
+        verbose_name = 'Language'
+        verbose_name_plural = 'Languages'
+
+
 class ExperienceModel(models.Model):
     title = models.CharField(max_length=255, verbose_name='Title')
     place = models.CharField(max_length=255, verbose_name='Place')
